@@ -13,9 +13,10 @@ let list_position_obstacle = [125, 240];
 let yy_obstacle = 25; 
 
 let xx_auto = 240;
-yy_auto = 500;
-let xx_obstacle;
+let yy_auto = 500;
 
+let xx_obstacle;
+let vitesse_obstacle = 10;
 let auto_droite = false;
 
 let points = 0;
@@ -34,13 +35,14 @@ function gameOver(){
 
 
 function hasardObstacle() {
-    yy_obstacle += 10;
+    yy_obstacle += vitesse_obstacle;
     if (yy_obstacle > canvas.height) {
         img_obstacle.src = list_obstacle[Math.floor(Math.random() * 3)];
         xx_obstacle = list_position_obstacle[Math.floor(Math.random() * 2)];
         ctx.drawImage(img_obstacle, xx_obstacle, yy_obstacle, 45, 75);
         points += 1;
         yy_obstacle = 25;
+        vitesse_obstacle += 0.5;
         
     }
     
