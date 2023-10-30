@@ -75,10 +75,10 @@ function deplacerVoiture() {
     scorePoint();
 
 
-    if (auto_droite && xx_auto < 300){
+    if (auto_droite && xx_auto < 280){
         xx_auto += 5;
     }
-    else if(xx_auto > 100){
+    else if(xx_auto > 120){
         xx_auto -= 5;
     }
 
