@@ -30,7 +30,7 @@ function gameOver(){
     ctx.fillText("Game Over", canvas.width / 2, canvas.height / 2);
 }
 function hasardObstacle() {
-    yy_obstacle += 7;
+    yy_obstacle += 10;
     if (yy_obstacle > canvas.height) {
         img_obstacle.src = list_obstacle[Math.floor(Math.random() * 3)];
         xx_obstacle = list_position_obstacle[Math.floor(Math.random() * 2)];
@@ -56,11 +56,11 @@ function deplacerVoiture() {
     ctx.drawImage(img_route, 0, 0, canvas.width, canvas.height);
     ctx.drawImage(img_auto, xx_auto, yy_auto, 45, 75);
     hasardObstacle();
-    if (auto_droite && xx_auto < 250){
-        xx_auto += 10;
+    if (auto_droite && xx_auto < 300){
+        xx_auto += 5;
     }
-    else if(xx_auto > 115){
-        xx_auto -= 10;
+    else if(xx_auto > 100){
+        xx_auto -= 5;
     }
 
     if (collisionObstacle()) {
