@@ -35,6 +35,8 @@ let auto_droite = false;
 let points = 0;
 let tours = 0;
 
+let seconde = 5;
+
 let animationID;
 
 // Sélection aléatoire d'un obstacle
@@ -95,6 +97,18 @@ function scorePoint() {
     ctx.fillText("Points : " + points, 10, 30);
 }
 
+// Fonction de minuteur de début de partie
+function minuteur() {
+    if(seconde >= 0){ 
+        ctx.drawImage(img_route, 0, 0, canvas.width, canvas.height);
+        ctx.font = "50px Arial";
+        ctx.fillStyle = "black";
+        ctx.fillText(seconde, canvas.width/2 - 25, canvas.height/2);
+    }
+    seconde -= 1;
+}
+
+
 // Fonction pour détecter les collisions avec les obstacles
 function collisionObstacle() {
     if (xx_auto + 45 > xx_obstacle && xx_auto < xx_obstacle + 45 && yy_auto + 75 > yy_obstacle && yy_auto < yy_obstacle + 75) {
@@ -117,6 +131,8 @@ function init() {
     bonus(tours);
     capture_bonus();
     scorePoint();
+   
+    
 
     if (auto_droite && xx_auto < 280) {
         xx_auto += 5;
@@ -144,5 +160,10 @@ document.addEventListener("keyup", function(event) {
     }
 });
 
-// Lancement du jeu
-init();
+setInterval(minuteur, 1000);
+
+setTimeout(() => {
+    init();
+}, 6000);
+
+
